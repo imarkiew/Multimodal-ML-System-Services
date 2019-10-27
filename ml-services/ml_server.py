@@ -3,8 +3,6 @@ import base64
 import requests
 import json
 import sqlalchemy as db
-import csv
-import configparser
 from sqlalchemy.orm import sessionmaker
 from argparse import ArgumentParser
 from examinations import Examinations
@@ -16,9 +14,8 @@ parser.add_argument("--config_type", help="Config type", type=str, required=True
 args = parser.parse_args()
 arguments = args.__dict__
 
-config = configparser.ConfigParser()
-config.read(arguments["config_file_path"])
-config_file = config[arguments["config_type"]]
+with open(arguments["config_file_path"], "r") as file:
+    config_file = json.load(file)[arguments["config_type"]]
 
 app = Flask(__name__)
 
@@ -44,7 +41,7 @@ def handle_skin_lesions_request():
         json_response = requests.post(config_file["ml_model_url"], data=data, headers=headers)
         predictions = json.loads(json_response.text)
 
-        predictions = parse_json_with_predictions_for_skin_lesions(predictions, config_file["label_class_matcher_file_path_for_skin_lesions"], to_percent_and_round)
+        predictions = parse_json_with_predictions_for_skin_lesions(predictions, config_file["skin_lesions_labels_classes_matcher"], to_percent_and_round)
 
         print(predictions)
 
@@ -61,11 +58,9 @@ def handle_skin_lesions_request():
         return response
 
 
-def parse_json_with_predictions_for_skin_lesions(predictions, label_class_matcher_file_path, customize_printed_value):
+def parse_json_with_predictions_for_skin_lesions(predictions, labels_classes_matcher, customize_printed_value):
     predictions = predictions["predictions"][0]
-    with open(label_class_matcher_file_path, "r") as file:
-        label_class_matcher = csv.DictReader(file, delimiter=",")
-        return json.dumps({match["class"]: customize_printed_value(predictions[int(match["label"])]) for match in label_class_matcher})
+    return json.dumps({class_: customize_printed_value(predictions[int(label)]) for label, class_ in labels_classes_matcher.items()})
 
 
 def to_percent_and_round(value, digits=2):
