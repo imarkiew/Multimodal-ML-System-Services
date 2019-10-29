@@ -60,7 +60,7 @@ def handle_skin_lesions_request():
 
 @app.route("/breastCancer", methods=["POST"])
 def handle_breast_cancer_request():
-    # try:
+    try:
         body = request.json
 
         # discard metainfo from base64 encoded image
@@ -89,10 +89,10 @@ def handle_breast_cancer_request():
         response = jsonify(success=True)
         response.status_code = 200
         return response
-    # except:
-    #     response = jsonify(success=False)
-    #     response.status_code = 500
-    #     return response
+    except:
+        response = jsonify(success=False)
+        response.status_code = 500
+        return response
 
 
 if __name__ == "__main__":
