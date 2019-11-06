@@ -8,6 +8,7 @@ from utilities import parse_predictions_for_breast_cancer, get_scaler_params
 parser = ArgumentParser()
 parser.add_argument("--config_file_path", help="Config file path", type=str, required=True)
 parser.add_argument("--config_type", help="Config type", type=str, required=True)
+parser.add_argument("--model_file_path", help="File path to model", type=str, required=True)
 args = parser.parse_args()
 arguments = args.__dict__
 
@@ -16,7 +17,7 @@ with open(arguments["config_file_path"], "r") as file:
 
 means, stds = get_scaler_params(config_file["input"])
 
-model = Model(config_file["model_file_path"], means, stds)
+model = Model(arguments["model_file_path"], means, stds)
 
 app = Flask(__name__)
 

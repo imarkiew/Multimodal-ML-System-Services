@@ -1,6 +1,5 @@
 {
   "DEFAULT": {
-    "model_file_path": "/home/igor/PycharmProjects/Multimodal-ML-System-Services/services/ml-services/breast-cancer/config/final_model_mlp.sav",
     "service_address": "localhost",
     "service_port": "2500",
     "breast_cancer_labels_classes_matcher": {
