@@ -1,3 +1,9 @@
+"""
+.. module:: server
+   :synopsis: Proxy server between ML models, database and play server
+"""
+
+
 from flask import Flask, request, jsonify
 import base64
 import requests
@@ -28,6 +34,11 @@ session = Session()
 
 @app.route("/skinLesions", methods=["POST"])
 def handle_skin_lesions_request():
+    """Handle incoming HTTP POST request with json body for skin lesions
+
+       Returns:
+          HTTP response with 200 status if there wasn't any exception and 500 otherwise
+   """
     try:
         body = request.json
 
@@ -60,6 +71,11 @@ def handle_skin_lesions_request():
 
 @app.route("/breastCancer", methods=["POST"])
 def handle_breast_cancer_request():
+    """Handle incoming HTTP POST request with json body for breast cancer
+
+       Returns:
+           HTTP response with 200 status if there wasn't any exception and 500 otherwise
+    """
     try:
         body = request.json
 

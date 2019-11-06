@@ -1,3 +1,9 @@
+"""
+.. module:: scikit_server
+   :synopsis: Server for serving breast cancer scikit learn model
+"""
+
+
 from flask import Flask, request, jsonify
 from argparse import ArgumentParser
 import json
@@ -16,7 +22,6 @@ with open(arguments["config_file_path"], "r") as file:
     config_file = json.load(file)[arguments["config_type"]]
 
 means, stds = get_scaler_params(config_file["input"])
-
 model = Model(arguments["model_file_path"], means, stds)
 
 app = Flask(__name__)
@@ -24,6 +29,12 @@ app = Flask(__name__)
 
 @app.route("/", methods=["POST"])
 def handle_request():
+    """Handle incoming HTTP POST request with json body
+
+       Returns:
+          HTTP json response with results if there wasn't any exception and 500 HTTP status otherwise
+
+       """
     try:
         predictions = model.predict_proba(request.json)
         response = parse_predictions_for_breast_cancer(predictions, config_file["breast_cancer_labels_classes_matcher"])
