@@ -3,7 +3,7 @@ WORKDIR /server
 ARG requirements=requirements.txt
 COPY ./${requirements} ${requirements}
 RUN pip install -r ${requirements}
-ARG proxy_server=server.py
+ARG proxy_server=proxy_server.py
 COPY ./${proxy_server} ${proxy_server}
 ARG utilities=utilities.py
 COPY ./${utilities} ${utilities}
