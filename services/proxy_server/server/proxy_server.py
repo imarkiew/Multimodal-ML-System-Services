@@ -32,12 +32,12 @@ session = Session()
 
 @app.route("/skinLesions", methods=["POST"])
 def handle_skin_lesions_request():
-        """Handle incoming HTTP POST request with json body for skin lesions
+    """Handle incoming HTTP POST request with json body for skin lesions
 
-           Returns:
-              HTTP response with 200 status if there wasn't any exception and 500 otherwise
-       """
-    # try:
+       Returns:
+          HTTP response with 200 status if there wasn't any exception and 500 otherwise
+   """
+    try:
         body = request.json
         content, path = preprocess_content_from_request_body(body, config_file["skin_lesions_output_dir"])
         data = json.dumps({"signature_name": "serving_default", "instances": [{"b64": content}]})
@@ -51,20 +51,20 @@ def handle_skin_lesions_request():
         response = jsonify(success=True)
         response.status_code = 200
         return response
-    # except:
-    #     response = jsonify(success=False)
-    #     response.status_code = 500
-    #     return response
+    except:
+        response = jsonify(success=False)
+        response.status_code = 500
+        return response
 
 
 @app.route("/breastCancer", methods=["POST"])
 def handle_breast_cancer_request():
-        """Handle incoming HTTP POST request with json body for breast cancer
+    """Handle incoming HTTP POST request with json body for breast cancer
 
-           Returns:
-               HTTP response with 200 status if there wasn't any exception and 500 otherwise
-        """
-    # try:
+       Returns:
+           HTTP response with 200 status if there wasn't any exception and 500 otherwise
+    """
+    try:
         body = request.json
         _, path = preprocess_content_from_request_body(body, config_file["breast_cancer_output_dir"])
         data = read_breast_cancer_file(path)
@@ -78,10 +78,10 @@ def handle_breast_cancer_request():
         response = jsonify(success=True)
         response.status_code = 200
         return response
-    # except:
-    #     response = jsonify(success=False)
-    #     response.status_code = 500
-    #     return response
+    except:
+        response = jsonify(success=False)
+        response.status_code = 500
+        return response
 
 
 if __name__ == "__main__":
