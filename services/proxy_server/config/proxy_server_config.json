@@ -2,7 +2,7 @@
     "DEFAULT": {
         "service_address": "localhost",
         "service_port": "5000",
-        "db_url": "mysql://user:userPassword@localhost:3306/multimodalMlSystemDatabase",
+        "db_url": "mysql://user:userPassword@127.0.0.1:3306/multimodalMlSystemDatabase",
         "skin_lesions_ml_model_url": "http://localhost:8501/v1/models/skin_lesions_model:predict",
         "skin_lesions_output_dir": "./skin_lesions",
         "breast_cancer_ml_model_url": "http://localhost:2500/",
