@@ -11,4 +11,6 @@ ARG examinations=examinations.py
 COPY ./${examinations} ${examinations}
 ENV proxy_server_env=$proxy_server
 ENV config_type=DEFAULT
+RUN mkdir breast_cancer
+RUN mkdir skin_lesions
 CMD ["sh", "-c", "python ${proxy_server_env} --config_file_path ./proxy_server_config.json --config_type ${config_type}"]
