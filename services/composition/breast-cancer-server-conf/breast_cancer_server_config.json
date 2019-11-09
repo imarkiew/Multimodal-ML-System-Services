@@ -1,0 +1,162 @@
+{
+  "DEFAULT": {
+    "service_address": "localhost",
+    "service_port": "2500",
+    "breast_cancer_labels_classes_matcher": {
+      "0": "benign",
+      "1": "malignant"
+    },
+    "input": [
+      {
+        "name": "radius_mean",
+        "offset": 14.127291739895,
+        "scaling": 3.5240488262121
+      },
+      {
+        "name": "texture_mean",
+        "offset": 19.289648506151,
+        "scaling": 4.3010357681669
+      },
+      {
+        "name": "perimeter_mean",
+        "offset": 91.969033391916,
+        "scaling": 24.298981038755
+      },
+      {
+        "name": "area_mean",
+        "offset": 654.88910369069,
+        "scaling": 351.91412918165
+      },
+      {
+        "name": "smoothness_mean",
+        "offset": 0.096360281195079,
+        "scaling": 0.014064128137674
+      },
+      {
+        "name": "compactness_mean",
+        "offset": 0.10434098418278,
+        "scaling": 0.052812757932512
+      },
+      {
+        "name": "concavity_mean",
+        "offset": 0.088799315817223,
+        "scaling": 0.079719808707893
+      },
+      {
+        "name": "concave points_mean",
+        "offset": 0.048919145869947,
+        "scaling": 0.038802844859154
+      },
+      {
+        "name": "symmetry_mean",
+        "offset": 0.1811618629174,
+        "scaling": 0.027414281336036
+      },
+      {
+        "name": "fractal_dimension_mean",
+        "offset": 0.062797609841828,
+        "scaling": 0.0070603627950845
+      },
+      {
+        "name": "radius_se",
+        "offset": 0.40517205623902,
+        "scaling": 0.2773127329861
+      },
+      {
+        "name": "texture_se",
+        "offset": 1.216853427065,
+        "scaling": 0.5516483926172
+      },
+      {
+        "name": "perimeter_se",
+        "offset": 2.8660592267135,
+        "scaling": 2.0218545540421
+      },
+      {
+        "name": "area_se",
+        "offset": 40.337079086116,
+        "scaling": 45.491005516132
+      },
+      {
+        "name": "smoothness_se",
+        "offset": 0.0070409789103691,
+        "scaling": 0.0030025179438391
+      },
+      {
+        "name": "compactness_se",
+        "offset": 0.02547813884007,
+        "scaling": 0.017908179325677
+      },
+      {
+        "name": "concavity_se",
+        "offset": 0.031893716344464,
+        "scaling": 0.030186060322988
+      },
+      {
+        "name": "concave points_se",
+        "offset": 0.011796137082601,
+        "scaling": 0.0061702851740469
+      },
+      {
+        "name": "symmetry_se",
+        "offset": 0.020542298769772,
+        "scaling": 0.0082663715287984
+      },
+      {
+        "name": "fractal_dimension_se",
+        "offset": 0.0037949038664323,
+        "scaling": 0.0026460709670892
+      },
+      {
+        "name": "radius_worst",
+        "offset": 16.269189806678,
+        "scaling": 4.8332415804693
+      },
+      {
+        "name": "texture_worst",
+        "offset": 25.677223198594,
+        "scaling": 6.1462576230383
+      },
+      {
+        "name": "perimeter_worst",
+        "offset": 107.26121265378,
+        "scaling": 33.602542269036
+      },
+      {
+        "name": "area_worst",
+        "offset": 880.5831282952,
+        "scaling": 569.35699266995
+      },
+      {
+        "name": "smoothness_worst",
+        "offset": 0.1323685940246,
+        "scaling": 0.022832429404835
+      },
+      {
+        "name": "compactness_worst",
+        "offset": 0.25426504393673,
+        "scaling": 0.15733648891374
+      },
+      {
+        "name": "concavity_worst",
+        "offset": 0.27218848330404,
+        "scaling": 0.20862428060813
+      },
+      {
+        "name": "concave points_worst",
+        "offset": 0.11460622319859,
+        "scaling": 0.065732341195942
+      },
+      {
+        "name": "symmetry_worst",
+        "offset": 0.2900755711775,
+        "scaling": 0.061867467537519
+      },
+      {
+        "name": "fractal_dimension_worst",
+        "offset": 0.083945817223199,
+        "scaling": 0.018061267348894
+      }
+    ]
+  }
+}

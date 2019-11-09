@@ -1,0 +1,21 @@
+{
+    "DEFAULT": {
+        "service_address": "localhost",
+        "service_port": "5000",
+        "db_url": "mysql://user:userPassword@127.0.0.1:3306/multimodalMlSystemDatabase",
+        "skin_lesions_ml_model_url": "http://localhost:8501/v1/models/skin_lesions_model:predict",
+        "skin_lesions_output_dir": "./skin_lesions",
+        "breast_cancer_ml_model_url": "http://localhost:2500/",
+        "breast_cancer_output_dir": "./breast_cancer",
+        "label_class_matcher_file_path_for_skin_lesions": "./label_class_matcher_skin_lesions.txt",
+        "skin_lesions_labels_classes_matcher": {
+            "0": "akiec",
+            "1": "bcc",
+            "2": "bkl",
+            "3": "df",
+            "4": "mel",
+            "5": "nv",
+            "6": "vasc"
+        }
+    }
+}

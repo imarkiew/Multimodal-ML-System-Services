@@ -1,0 +1,39 @@
+version: '3'
+services:
+  play-server:
+    image: play-server
+    restart: always
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./play-server-conf/application.prod.conf:/server/application.prod.conf
+    network_mode: "host"
+  proxy-server:
+    image: proxy-server
+    restart: always
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./proxy-server-conf/proxy_server_config.json:/server/proxy_server_config.json
+      - ./saved-files/breast-cancer:/server/breast_cancer
+      - ./saved-files/skin-lesions:/server/skin_lesions
+    environment:
+      - config_type=DEFAULT
+    network_mode: "host"
+  breast-cancer-server:
+    image: breast-cancer-server
+    restart: always
+    volumes:
+      - ./breast-cancer-server-conf/breast_cancer_server_config.json:/server/breast_cancer_server_config.json
+      - ./breast-cancer-server-conf/final_model_mlp.sav:/server/model.sav
+    environment:
+      - config_type=DEFAULT
+    network_mode: "host"
+  skin-lesions-server:
+    image: tensorflow/serving
+    restart: always
+    volumes:
+      - ./tensorflow-serving-conf/export/:/models/skin_lesions_model
+    environment:
+      - MODEL_NAME=skin_lesions_model
+    network_mode: "host"
