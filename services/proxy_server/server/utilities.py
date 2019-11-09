@@ -34,7 +34,6 @@ def parse_predictions_for_breast_cancer(predictions, customize_printed_value=Non
     :return:
     """
     predictions = json.loads(predictions)
-    print(predictions)
     if customize_printed_value is not None:
         return json.dumps({class_: customize_printed_value(prediction) for class_, prediction in predictions.items()}).replace("'", '"')
     else:
@@ -67,7 +66,7 @@ def construct_save_file_path(body, base_file_path):
     :param base_file_path:
     :return: String for save file path
     """
-    return base_file_path + body["username"] + "_" + body["fileName"]
+    return base_file_path + "/" + body["username"] + "_" + body["fileName"]
 
 
 def preprocess_content_from_request_body(body, base_file_path="./"):
