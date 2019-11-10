@@ -3,16 +3,12 @@ services:
   play-server:
     image: play-server
     restart: always
-    ports:
-      - "9000:9000"
     volumes:
       - ./play-server-conf/application.prod.conf:/server/application.prod.conf
     network_mode: "host"
   proxy-server:
     image: proxy-server
     restart: always
-    ports:
-      - "5000:5000"
     volumes:
       - ./proxy-server-conf/proxy_server_config.json:/server/proxy_server_config.json
       - ./saved-files/breast-cancer:/server/breast_cancer
